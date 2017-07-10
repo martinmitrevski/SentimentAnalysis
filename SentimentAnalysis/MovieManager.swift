@@ -33,11 +33,6 @@ class MovieManager {
         saveChanges()
     }
     
-    func deleteMovie(withTitle title:String) {
-        savedMovies[title] = nil
-        saveChanges()
-    }
-    
     func addReview(toMovieTitle movieTitle: String, review: String, sentiment: ReviewSentiment) {
         var key = positivesKey
         if sentiment == .Bad {
