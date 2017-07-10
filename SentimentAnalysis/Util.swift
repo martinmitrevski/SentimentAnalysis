@@ -23,9 +23,11 @@ func convert(string: String, wordCountings: Dictionary<String, Dictionary<String
         mlMultiArray[i] = 0
     }
     
-    let separatedWords: [String] = string.components(separatedBy: " ").map { word -> String in
-        return word.replacingOccurrences(of: ".", with: "")
-    }
+    let separatedWords: [String] = string
+        .components(separatedBy: .punctuationCharacters)
+        .joined()
+        .components(separatedBy: .whitespaces)
+        .filter{!$0.isEmpty}
     
     for word in separatedWords {
         if let wordInfo = wordCountings[word] {
